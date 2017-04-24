@@ -2,11 +2,11 @@
   <input mdInput placeholder="Search" [(ngModel)]="input" type="search" (keyup.enter)="searchWiki()">
 </md-input-container>
 
-
-<div *ngIf="search.stuff != undefined">
-<md-card>
-  <md-card-title>{{search.stuff.title[0]}}</md-card-title>
-  <md-card-subtitle>{{search.stuff.description[0]}}</md-card-subtitle>
-  <md-card-subtitle>{{search.stuff.link[0]}}</md-card-subtitle>
+<div *ngIf="searchResults !== []">
+<md-card *ngFor="let item of searchResults">
+  <md-card-title><a href="javascript:void(0)" (click)="onSelect(item.title);clickedArticle()">{{item?.title}}</a></md-card-title>
+  <md-card-subtitle>{{item?.description}}</md-card-subtitle>
+  <md-card-subtitle><a href="{{item?.link}}" target="_blank">{{item?.link}}</a></md-card-subtitle>
+  <div *ngIf="selectedItem == item.title" [innerHTML]="article"></div>
 </md-card>
 </div>

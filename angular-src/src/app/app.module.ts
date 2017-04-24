@@ -28,7 +28,7 @@ import { WikiService } from './services/wiki.service';
     MdCardModule,
     JsonpModule,
     MdInputModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [WikiService],
   bootstrap: [AppComponent]
