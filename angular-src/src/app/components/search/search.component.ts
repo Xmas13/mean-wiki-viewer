@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,  Output, EventEmitter } from '@angular/core';
 import { WikiService } from '../../services/wiki.service';
-import { FormControl } from '@angular/forms';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-search',
@@ -9,18 +9,16 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
   input:string;
-  searchResults: object[];
-  article;
-  selectedItem;
-  constructor(private wiki: WikiService) {
+  searchResults: object[]
+  @Output() emitSearchResults: EventEmitter<object[]> = new EventEmitter();
+  constructor(private wiki: WikiService, private flashmessage: FlashMessagesService) {
    }
   ngOnInit() {
-    this.searchWiki();
   }
 
   searchWiki() {
     if (this.input === undefined) {
-      console.log("Enter a search term")
+      this.flashmessage.show('Please Enter a Search Term');
     }
     else {
     this.wiki.getWikiArticle(this.input)
@@ -34,30 +32,15 @@ export class SearchComponent implements OnInit {
                         j++;
                       }
                     } else {
-                      console.log("Enter a search term");
+                      this.flashmessage.show('Please Enter a Search Term');
                     }
+                    this.sendSearchResultsToParent();
                     })
     }
   }
 
-  clickedArticle() {
-    if (this.selectedItem !== "") {
-    this.wiki.getWikiFullText(this.selectedItem)
-      .subscribe(data => {
-        let pageid = data.query.pageids[0];
-        this.article = data.query.pages[pageid].extract;
-      });
-    }
+  sendSearchResultsToParent() {
+    this.emitSearchResults.emit(this.searchResults);
   }
-
-  onSelect(item) {
-    if (this.selectedItem === item) {
-      this.selectedItem = ""
-    }
-    else {
-    this.selectedItem = item;
-  }
-
-}
 
 }

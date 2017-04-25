@@ -7,10 +7,12 @@ import {MdToolbarModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {JsonpModule} from '@angular/http';
 import {MdInputModule} from '@angular/material';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SearchComponent } from './components/search/search.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 import { WikiService } from './services/wiki.service';
 
@@ -19,6 +21,7 @@ import { WikiService } from './services/wiki.service';
     AppComponent,
     ToolbarComponent,
     SearchComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { WikiService } from './services/wiki.service';
     JsonpModule,
     MdInputModule,
     FormsModule,
+    FlashMessagesModule
   ],
   providers: [WikiService],
   bootstrap: [AppComponent]

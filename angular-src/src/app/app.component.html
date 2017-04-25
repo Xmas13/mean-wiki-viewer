@@ -1,2 +1,4 @@
 <app-toolbar></app-toolbar>
-<app-search></app-search>
+<flash-messages></flash-messages>
+<app-search (emitSearchResults)="handleSearchResults($event)"></app-search>
+<app-cards [searchResults]="searchResults"></app-cards>
