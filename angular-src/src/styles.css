@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+.flash-messages {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+}

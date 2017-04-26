@@ -8,6 +8,7 @@ import {MdCardModule} from '@angular/material';
 import {JsonpModule} from '@angular/http';
 import {MdInputModule} from '@angular/material';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import {MdButtonModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -32,7 +33,8 @@ import { WikiService } from './services/wiki.service';
     JsonpModule,
     MdInputModule,
     FormsModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    MdButtonModule
   ],
   providers: [WikiService],
   bootstrap: [AppComponent]

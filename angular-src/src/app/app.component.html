@@ -1,4 +1,8 @@
 <app-toolbar></app-toolbar>
-<flash-messages></flash-messages>
+<div style="margin-left: .25em; margin-right: .25em">
+  <flash-messages></flash-messages>
+<!-- Sets up emit handler to handle emit event and set searchResults in main app component -->
 <app-search (emitSearchResults)="handleSearchResults($event)"></app-search>
+ <!-- Sets up input from main app component for searchResults -->
 <app-cards [searchResults]="searchResults"></app-cards>
+</div>

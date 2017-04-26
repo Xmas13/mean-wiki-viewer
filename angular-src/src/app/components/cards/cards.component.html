@@ -1,8 +1,12 @@
-<div *ngIf="searchResults !== []">
-<md-card *ngFor="let item of searchResults">
-  <md-card-title><a href="javascript:void(0)" (click)="onSelect(item.title);clickedArticle()">{{item?.title}}</a></md-card-title>
+<div *ngIf="searchResults !== []"> <!-- Div will not show cards if there are no searchResults set -->
+<md-card style="margin-top: 1em; margin-left: 1em; margin-right: 1em" *ngFor="let item of searchResults"> <!-- loops through each item in the searchResults object array -->
+  <!-- Sets up click handler for setting whether article is selected and will run the function for getting the article -->
+  <md-card-title><a href="javascript:void(0)" (click)="onSelect(item.title);clickedSearchedArticle()">{{item?.title}}</a></md-card-title>
+  <!-- Sets up description -->
   <md-card-subtitle>{{item?.description}}</md-card-subtitle>
+  <!-- Sets up link -->
   <md-card-subtitle><a href="{{item?.link}}" target="_blank">{{item?.link}}</a></md-card-subtitle>
+  <!-- Article will only show below in card if it is the selected item -->
   <div *ngIf="selectedItem == item.title" [innerHTML]="article"></div>
 </md-card>
 </div>

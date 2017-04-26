@@ -1,3 +1,15 @@
-<md-input-container>
+<!-- Configures input box. Sets a 2 way ngModel bind to input. keyup.enter means we can also run the searchWiki() function if we press enter. -->
+<div style="margin-top: 1em;" class="container-fluid">
+<div class="row">
+<div class="col-md-2">
+<md-input-container style="padding-right: 0; width: 100%">
   <input mdInput placeholder="Search" [(ngModel)]="input" type="search" (keyup.enter)="searchWiki()">
 </md-input-container>
+</div>
+<div class="col-md-10">
+<!-- Creates buttons that use the searchWiki() and randomWiki() functions as their click handler. -->
+<button md-raised-button (click)="searchWiki()">Search</button>
+<button style="margin-left: .5em;" md-raised-button (click)="randomWiki()">Random Article</button>
+</div>
+</div>
+</div>
